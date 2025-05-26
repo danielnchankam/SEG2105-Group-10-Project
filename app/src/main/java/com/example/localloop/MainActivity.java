@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         EditText usernameField = findViewById(R.id.usernameField);
         EditText passwordField = findViewById(R.id.passwordField);
         Button loginButton = findViewById(R.id.loginButton);
-
         loginButton.setOnClickListener(v -> {
             String inputUsername = usernameField.getText().toString();
             String inputPassword = passwordField.getText().toString();
