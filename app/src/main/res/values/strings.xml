@@ -3,4 +3,6 @@
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
     <string name="login_button">Login</string>
+    <string name="msg_empty_fields">Fields must not be empty</string>
+    <string name="msg_duplicate_category">Duplicate category name</string>
 </resources>
