@@ -23,4 +23,5 @@ public class Category {
     // ---------- setters ----------
     public void setName(String n) { this.name = n; }
     public void setDescription(String d) { this.description = d; }
+
 }
