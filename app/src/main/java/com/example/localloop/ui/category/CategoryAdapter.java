@@ -67,5 +67,6 @@ public class CategoryAdapter extends ListAdapter<Category, CategoryAdapter.VH> {
         h.title.setText(c.getName());
         h.desc .setText(c.getDescription());
         h.edit.setOnClickListener(v -> editClick.accept(c.getId()));
+        //setOnClickListener
     }
 }

@@ -11,12 +11,9 @@ public class Category {
         this.name = name;
         this.description = description;
     }
-
     public Category(String name, String description) {  // for inserts
         this(-1, name, description);
     }
-
-    public Category() { }
 
     // ---------- getters ----------
     public int getId() { return id; }
@@ -26,5 +23,4 @@ public class Category {
     // ---------- setters ----------
     public void setName(String n) { this.name = n; }
     public void setDescription(String d) { this.description = d; }
-    public void setId(int id) { this.id = id; } // added earlier
 }

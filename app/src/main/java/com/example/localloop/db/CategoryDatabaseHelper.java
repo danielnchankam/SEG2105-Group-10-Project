@@ -48,6 +48,10 @@ public class CategoryDatabaseHelper extends SQLiteOpenHelper {
         return getWritableDatabase().update(TABLE, v, COL_ID+"=?",
                 new String[]{String.valueOf(c.getId())});
     }
+    public int remove(Category c) {
+        return getWritableDatabase().delete(TABLE, COL_ID + "=?",
+                new String[]{String.valueOf(c.getId())});
+    }
     public Category get(int id){
         Cursor cur = getReadableDatabase().query(TABLE, null,
                 COL_ID+"=?", new String[]{String.valueOf(id)},
