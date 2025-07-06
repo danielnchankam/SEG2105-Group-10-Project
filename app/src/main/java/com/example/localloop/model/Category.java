@@ -11,9 +11,12 @@ public class Category {
         this.name = name;
         this.description = description;
     }
+
     public Category(String name, String description) {  // for inserts
         this(-1, name, description);
     }
+
+    public Category() { }  // Needed for DB reads
 
     // ---------- getters ----------
     public int getId() { return id; }
@@ -21,6 +24,7 @@ public class Category {
     public String getDescription() { return description; }
 
     // ---------- setters ----------
+    public void setId(int id) { this.id = id; }  // Needed for DB reads
     public void setName(String n) { this.name = n; }
     public void setDescription(String d) { this.description = d; }
 }

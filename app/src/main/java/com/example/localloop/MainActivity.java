@@ -13,8 +13,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.localloop.model.Category; // ✅ Import Category
-import com.example.localloop.ui.category.AddEventActivity; // ✅ Import AddEventActivity
+import com.example.localloop.model.Category;
+import com.example.localloop.ui.category.AddEventActivity;
+import com.example.localloop.ui.category.MyEventsActivity; // ✅ Import MyEventsActivity
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,16 +34,13 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize the SQLite database
         DatabaseHelper dbHelper = new DatabaseHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase(); // ensures DB file exists
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        // Insert a test category (only if table is empty)
         if (dbHelper.getAllCategories().isEmpty()) {
             dbHelper.insertCategory(new Category("Test Category", "Temporary test category"));
         }
 
-        // Admin login logic
         EditText usernameField = findViewById(R.id.usernameField);
         EditText passwordField = findViewById(R.id.passwordField);
         Button loginButton = findViewById(R.id.loginButton);
@@ -59,10 +57,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // New button to open AddEventActivity
         Button addEventButton = findViewById(R.id.addEventButton);
         addEventButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
+            startActivity(intent);
+        });
+
+        // ✅ New button to open MyEventsActivity
+        Button viewMyEventsButton = findViewById(R.id.viewMyEventsButton);
+        viewMyEventsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MyEventsActivity.class);
             startActivity(intent);
         });
     }
