@@ -13,6 +13,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.localloop.model.Category; // ✅ Import Category
+import com.example.localloop.ui.category.AddEventActivity; // ✅ Import AddEventActivity
+
 public class MainActivity extends AppCompatActivity {
 
     private final String ADMIN_USERNAME = "admin";
@@ -30,11 +33,16 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // ✅ Initialize the SQLite database
+        // Initialize the SQLite database
         DatabaseHelper dbHelper = new DatabaseHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase(); // optional, just to ensure DB is created
+        SQLiteDatabase db = dbHelper.getWritableDatabase(); // ensures DB file exists
 
-        // 🟡 Admin login logic
+        // Insert a test category (only if table is empty)
+        if (dbHelper.getAllCategories().isEmpty()) {
+            dbHelper.insertCategory(new Category("Test Category", "Temporary test category"));
+        }
+
+        // Admin login logic
         EditText usernameField = findViewById(R.id.usernameField);
         EditText passwordField = findViewById(R.id.passwordField);
         Button loginButton = findViewById(R.id.loginButton);
@@ -49,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(MainActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        // New button to open AddEventActivity
+        Button addEventButton = findViewById(R.id.addEventButton);
+        addEventButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddEventActivity.class);
+            startActivity(intent);
         });
     }
 }

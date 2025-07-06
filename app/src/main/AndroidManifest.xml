@@ -16,6 +16,7 @@
         <activity android:name=".ui.category.CategoryListActivity"/>
         <activity android:name=".ui.category.AddEditCategoryActivity"/>
 
+        <activity android:name=".ui.category.AddEventActivity"/>
 
         <activity android:name=".WelcomeActivity" />
 
